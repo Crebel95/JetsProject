@@ -8,6 +8,8 @@ public class FighterJet extends Jet implements CombatReady{
 	
 	
 	public void fight() {
+		String activateFighters = "Now activating Fighter Jets!";
+		System.out.println(activateFighters);
 		
 	}
  	

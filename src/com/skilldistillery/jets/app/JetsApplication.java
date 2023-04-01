@@ -58,11 +58,11 @@ public class JetsApplication {
 				af.viewLongestRange();
 			}
 			if (selection == 5) {
-				// load all cargo jets
+				af.loadCargoJets();
 			}
 
 			if (selection == 6) {
-				// deploy fighter jets
+				af.activateFighterJets();
 			}
 			if (selection == 7) {
 				//// add jet to fleet

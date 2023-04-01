@@ -111,6 +111,23 @@ public class AirField {
 
 	}
 	
-	
+	public void loadCargoJets() {
+		for (Jet jet : fleet) {
+			if (jet instanceof CargoPlane) {
+				CargoPlane cp = (CargoPlane) jet;
+				cp.loadCargo();
+			}
+		}
+		
+	}
+	public void activateFighterJets() {
+		for (Jet jet : fleet) {
+			if (jet instanceof FighterJet) {
+				FighterJet cp = (FighterJet) jet;
+				cp.fight();
+			}
+		}
+		
+	}
 
 }
