@@ -16,7 +16,7 @@ public abstract class Jet {
 	}
 	
 
-	public String Fly() {
+	public String fly() {
 		double flightTime = range / speed;
 		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "Max amount of flight time: " + flightTime;
 		
@@ -78,8 +78,7 @@ public abstract class Jet {
 	
 	@Override
 	public String toString() {
-		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
 	}
 
 }

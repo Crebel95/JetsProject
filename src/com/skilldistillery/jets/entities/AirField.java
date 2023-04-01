@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirField {
-	
+
 	// Only the airfield can talk to any jet on the airfield
 	// lots of methods here
 
@@ -15,7 +15,7 @@ public class AirField {
 
 	public AirField() {
 		// populate its fleet from the file
-		fleet = new ArrayList<Jet>();
+		fleet = readFromFile("jets.txt");
 
 	}
 
@@ -35,46 +35,82 @@ public class AirField {
 				// then create a fighter jet
 
 				// and add that specific jet to your jets list
-	            String type = jetDetails[0];
+				String type = jetDetails[0];
 				String model = jetDetails[1];
 				double speed = Double.parseDouble(jetDetails[2]);
 				int range = Integer.parseInt(jetDetails[3]);
 				long price = Long.parseLong(jetDetails[4]);
-				
-				
-					
-				
-				
-				if(type.equals("UAV")) {
-					
-					Jet newJet = new UAV(model,speed, range, price);
-					jets.add(newJet);
-					}
-				if(type.equals("SpacePlane")) {
-					Jet newJet = new SpacePlane(model,speed, range, price);
+
+				if (type.equals("UAV")) {
+
+					Jet newJet = new UAV(model, speed, range, price);
 					jets.add(newJet);
 				}
-				if(type.equals("FighterJet")) {
-					Jet newJet = new FighterJet(model,speed, range, price);
+				if (type.equals("SpacePlane")) {
+					Jet newJet = new SpacePlane(model, speed, range, price);
 					jets.add(newJet);
 				}
-				if(type.equals("PassengerPlane")) {
-					Jet newJet = new PassengerPlane(model,speed, range, price);
+				if (type.equals("FighterJet")) {
+					Jet newJet = new FighterJet(model, speed, range, price);
 					jets.add(newJet);
 				}
-				if(type.equals("CargoPlane")) {
-					Jet newJet = new CargoPlane(model,speed, range, price);
+				if (type.equals("PassengerPlane")) {
+					Jet newJet = new PassengerPlane(model, speed, range, price);
 					jets.add(newJet);
 				}
-				
-				
+				if (type.equals("CargoPlane")) {
+					Jet newJet = new CargoPlane(model, speed, range, price);
+					jets.add(newJet);
+				}
+
 			}
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-		// and add that specific Jet type to your Jet List.
 
-		
 		return jets;
 	}
+
+	public void printFleet() {
+		for (Jet jets : fleet) {
+			System.out.println(jets.toString());
+		}
+	}
+
+	public void flyFleet() {
+		for (Jet jets : fleet) {
+			System.out.println(jets.fly());
+		}
+	}
+
+	public void viewFastest() {
+
+		double highest = 0.0;
+		Jet fastest = null;
+
+		for (Jet jet : fleet) {
+			if (jet.getSpeed() > highest) {
+				highest = jet.getSpeed();
+				fastest = jet;
+			}
+		}
+		System.out.println(fastest);
+	}
+
+	public void viewLongestRange() {
+		double highest = 0.0;
+		Jet longestRange = null;
+
+		for (Jet jet : fleet) {
+			if (jet.getRange() > highest) {
+				highest = jet.getRange();
+				longestRange = jet;
+			}
+		}
+		System.out.println(longestRange);
+
+	}
+	
+	
+
 }
