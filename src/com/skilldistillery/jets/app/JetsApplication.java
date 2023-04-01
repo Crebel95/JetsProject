@@ -65,7 +65,7 @@ public class JetsApplication {
 				af.activateFighterJets();
 			}
 			if (selection == 7) {
-				//// add jet to fleet
+				af.addJet();
 			}
 
 			if (selection == 8) {

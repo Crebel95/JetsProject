@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AirField {
 
@@ -110,7 +111,7 @@ public class AirField {
 		System.out.println(longestRange);
 
 	}
-	
+
 	public void loadCargoJets() {
 		for (Jet jet : fleet) {
 			if (jet instanceof CargoPlane) {
@@ -118,14 +119,53 @@ public class AirField {
 				cp.loadCargo();
 			}
 		}
-		
+
 	}
+
 	public void activateFighterJets() {
 		for (Jet jet : fleet) {
 			if (jet instanceof FighterJet) {
 				FighterJet cp = (FighterJet) jet;
 				cp.fight();
 			}
+		}
+
+	}
+
+	public void addJet() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(
+				"Enter the type of Jet you would like to add to the fleet (UAV, FighterJet, SpacePlane, PassengerPlane, or CargoPlane: ");
+		String type = sc.nextLine();
+		System.out.println("Enter the model of Jet: ");
+		String model = sc.nextLine();
+		System.out.println("Enter the Jet's speed: ");
+		double speed = sc.nextDouble();
+		System.out.println("Enter the Jet's range: ");
+		int range = sc.nextInt();
+		System.out.println("Enter the Jet's price: ");
+		long price = sc.nextLong();
+
+		if (type.equals("UAV")) {
+
+			Jet newJet = new UAV(model, speed, range, price);
+			fleet.add(newJet);
+		}
+		if (type.equals("SpacePlane")) {
+			Jet newJet = new SpacePlane(model, speed, range, price);
+			fleet.add(newJet);
+		}
+		if (type.equals("FighterJet")) {
+			Jet newJet = new FighterJet(model, speed, range, price);
+			fleet.add(newJet);
+		}
+		if (type.equals("PassengerPlane")) {
+			Jet newJet = new PassengerPlane(model, speed, range, price);
+			fleet.add(newJet);
+		}
+		if (type.equals("CargoPlane")) {
+			Jet newJet = new CargoPlane(model, speed, range, price);
+			fleet.add(newJet);
 		}
 		
 	}
