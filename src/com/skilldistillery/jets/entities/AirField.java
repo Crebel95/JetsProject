@@ -7,37 +7,74 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirField {
-	//Only the airfield can talk to any jet on the airfield
-	//lots of methods here
 	
+	// Only the airfield can talk to any jet on the airfield
+	// lots of methods here
+
 	private List<Jet> fleet;
-	
+
 	public AirField() {
 		// populate its fleet from the file
+		fleet = new ArrayList<Jet>();
+
 	}
 
-	public List<Jet> readFromFile(String fn) {      //something has to call the readFromFile
-	List<Jet> jets = new ArrayList<>();
-	
-	// read in the various jet types from the file.
-	try ( BufferedReader bufIn = new BufferedReader(new FileReader(fn)) ) {
-		  String aJet;
-		  while ((aJet = bufIn.readLine()) != null) {
-			  // as you read in a Jet, create a Jet. //new
-		   String[] jetDetails = aJet.split(",");    
-		   //create the appropriate jet based on all the jet details.
-		   //psy -- if the jet details in the first position happens to be a DCV, then create a dilithiumPowered jet
-		   //psy -- if the jet details in the first position happens to be a fighter jet, then create a fighter jet
-		  
-		   //and add that specific jet to your jets list
-			  
-		  }
+	public List<Jet> readFromFile(String fn) { // something has to call the readFromFile
+		List<Jet> jets = new ArrayList<>();
+
+		// read in the various jet types from the file.
+		try (BufferedReader bufIn = new BufferedReader(new FileReader(fn))) {
+			String aJet;
+			while ((aJet = bufIn.readLine()) != null) {
+				// as you read in a Jet, create a Jet. //new
+				String[] jetDetails = aJet.split(",");
+				// create the appropriate jet based on all the jet details.
+				// psy -- if the jet details in the first position happens to be a DCV, then
+				// create a dilithiumPowered jet
+				// psy -- if the jet details in the first position happens to be a fighter jet,
+				// then create a fighter jet
+
+				// and add that specific jet to your jets list
+	            String type = jetDetails[0];
+				String model = jetDetails[1];
+				double speed = Double.parseDouble(jetDetails[2]);
+				int range = Integer.parseInt(jetDetails[3]);
+				long price = Long.parseLong(jetDetails[4]);
+				
+				
+					
+				
+				
+				if(type.equals("UAV")) {
+					
+					Jet newJet = new UAV(model,speed, range, price);
+					jets.add(newJet);
+					}
+				if(type.equals("SpacePlane")) {
+					Jet newJet = new SpacePlane(model,speed, range, price);
+					jets.add(newJet);
+				}
+				if(type.equals("FighterJet")) {
+					Jet newJet = new FighterJet(model,speed, range, price);
+					jets.add(newJet);
+				}
+				if(type.equals("PassengerPlane")) {
+					Jet newJet = new PassengerPlane(model,speed, range, price);
+					jets.add(newJet);
+				}
+				if(type.equals("CargoPlane")) {
+					Jet newJet = new CargoPlane(model,speed, range, price);
+					jets.add(newJet);
+				}
+				
+				
+			}
+		} catch (IOException e) {
+			System.err.println(e);
 		}
-		catch (IOException e) {
-		  System.err.println(e);
-		}
-	//and add that specific Jet type to your Jet List.
-	
-	return jets;
-}
+		// and add that specific Jet type to your Jet List.
+
+		
+		return jets;
+	}
 }
