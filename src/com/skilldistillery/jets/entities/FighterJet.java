@@ -6,9 +6,9 @@ public class FighterJet extends Jet implements CombatReady{
 		super(model, speed, range, price);
 	}
 	
-	
+	@Override
 	public void fight() {
-		String activateFighters = "Now activating Fighter Jets!";
+		String activateFighters = "Now activating weapons for Fighter Jets!";
 		System.out.println(activateFighters);
 		
 	}

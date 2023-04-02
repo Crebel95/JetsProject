@@ -27,6 +27,7 @@ public class JetsApplication {
 
 		while (running) {
 
+			System.out.println(" ");
 			System.out.println("Welcome to the Main Menu. Please select an option from the list below: ");
 			System.out.println(" ");
 			System.out.println("--------Main Menu-------");
@@ -40,6 +41,7 @@ public class JetsApplication {
 			System.out.println("7. Add a new jet to the fleet ");
 			System.out.println("8. Remove a jet from the fleet ");
 			System.out.println("9. Exit program ");
+			System.out.println("------------------------");
 
 			selection = sc.nextInt();
 
@@ -69,10 +71,12 @@ public class JetsApplication {
 			}
 
 			if (selection == 8) {
-				// remove jet from fleet
+				af.removeJet();
 			}
 			if (selection == 9) {
-				// quit
+				System.out.println("You have chosen to exit the program. Goodbye.");
+				sc.close();
+				running = false;
 			}
 
 		}

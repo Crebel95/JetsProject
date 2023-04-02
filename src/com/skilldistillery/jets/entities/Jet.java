@@ -3,22 +3,27 @@ package com.skilldistillery.jets.entities;
 import java.util.Objects;
 
 public abstract class Jet {
+	private int idNum;
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
+	private static int count;
 	
 	public Jet(String model, double speed, int range, long price) {
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
+		count++;
+		idNum = count;
 	}
 	
 
 	public String fly() {
 		double flightTime = range / speed;
-		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "Max amount of flight time: " + flightTime;
+		return "Jet model= " + model + ", speed= " + speed + " mph" + ", range= " +
+				range + ", price= " + price + ", Max amount of flight time: " + flightTime;
 		
 	}
 	
@@ -78,7 +83,8 @@ public abstract class Jet {
 	
 	@Override
 	public String toString() {
-		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+		return "Jet number= " +idNum + "[model=" + model + ", speed=" + 
+	speed + " mph " + ", range=" + range + ", price=" + price + "]";
 	}
 
 }

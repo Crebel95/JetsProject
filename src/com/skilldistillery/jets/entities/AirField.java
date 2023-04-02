@@ -9,33 +9,21 @@ import java.util.Scanner;
 
 public class AirField {
 
-	// Only the airfield can talk to any jet on the airfield
-	// lots of methods here
-
 	private List<Jet> fleet;
 
 	public AirField() {
-		// populate its fleet from the file
 		fleet = readFromFile("jets.txt");
-
 	}
 
-	public List<Jet> readFromFile(String fn) { // something has to call the readFromFile
+	public List<Jet> readFromFile(String fn) {
 		List<Jet> jets = new ArrayList<>();
 
-		// read in the various jet types from the file.
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fn))) {
 			String aJet;
 			while ((aJet = bufIn.readLine()) != null) {
-				// as you read in a Jet, create a Jet. //new
-				String[] jetDetails = aJet.split(",");
-				// create the appropriate jet based on all the jet details.
-				// psy -- if the jet details in the first position happens to be a DCV, then
-				// create a dilithiumPowered jet
-				// psy -- if the jet details in the first position happens to be a fighter jet,
-				// then create a fighter jet
 
-				// and add that specific jet to your jets list
+				String[] jetDetails = aJet.split(",");
+
 				String type = jetDetails[0];
 				String model = jetDetails[1];
 				double speed = Double.parseDouble(jetDetails[2]);
@@ -167,6 +155,24 @@ public class AirField {
 			Jet newJet = new CargoPlane(model, speed, range, price);
 			fleet.add(newJet);
 		}
+
+	}
+	
+	public void removeJet() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Remove a Jet by entering its Jet number: ");
+		printFleet();
+		int userSelection = sc.nextInt();
+		
+		if (userSelection >= 1 && userSelection <= fleet.size()) {
+			fleet.remove(userSelection - 1);
+			System.out.println("Jet number " + userSelection + " has been removed from the fleet.");
+		}
+		else {
+			System.out.println("The number entered is invalid.");
+		}
+		
+		
 		
 	}
 

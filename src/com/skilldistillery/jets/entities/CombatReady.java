@@ -1,8 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public interface CombatReady {
-	
-	
+public interface CombatReady{
 	void fight();
 
 }
