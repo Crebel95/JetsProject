@@ -177,8 +177,18 @@ public class AirField {
 			System.out.println("The number entered is invalid.");
 		}
 		
-		
-		
 	}
-
+	
+	public void flySingleJet() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Which Jet would you like to fly (Enter the Jet's number ");
+		printFleet();
+		int userSelection = sc.nextInt();
+		 if (userSelection >= 1 && userSelection <= fleet.size()) {
+			Jet selectedJet = fleet.get(userSelection- 1);
+			System.out.println(selectedJet.fly());
+		 }
+	}
+	
 }

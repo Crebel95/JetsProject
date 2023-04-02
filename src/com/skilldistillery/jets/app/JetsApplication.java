@@ -40,7 +40,8 @@ public class JetsApplication {
 			System.out.println("6. Deploy Fighter Jets ");
 			System.out.println("7. Add a new jet to the fleet ");
 			System.out.println("8. Remove a jet from the fleet ");
-			System.out.println("9. Exit program ");
+			System.out.println("9. Select a single jet to fly ");
+			System.out.println("10. Exit program ");
 			System.out.println("------------------------");
 
 			selection = sc.nextInt();
@@ -74,11 +75,14 @@ public class JetsApplication {
 				af.removeJet();
 			}
 			if (selection == 9) {
+				af.flySingleJet();
+			}
+			if (selection == 10) {
 				System.out.println("You have chosen to exit the program. Goodbye!");
 				sc.close();
 				running = false;
 			}
-			if (selection <= 0 || selection >= 10){
+			if (selection <= 0 || selection >= 11){
 				System.err.println("Invalid entry. Please enter a number between 1 - 9.");
 			}
 
