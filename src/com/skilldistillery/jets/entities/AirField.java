@@ -83,7 +83,7 @@ public class AirField {
 				fastest = jet;
 			}
 		}
-		System.out.println(fastest);
+		System.out.println("The fastest Jet in the fleet is: " + fastest);
 	}
 
 	public void viewLongestRange() {
@@ -96,7 +96,7 @@ public class AirField {
 				longestRange = jet;
 			}
 		}
-		System.out.println(longestRange);
+		System.out.println("The Jet with the longest range is: " + longestRange);
 
 	}
 
@@ -123,7 +123,7 @@ public class AirField {
 	public void addJet() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println(
-				"Enter the type of Jet you would like to add to the fleet (UAV, FighterJet, SpacePlane, PassengerPlane, or CargoPlane: ");
+				"Enter the type of Jet you would like to add to the fleet (UAV, FighterJet, SpacePlane, PassengerPlane, or CargoPlane) *There should not be a space in your entry.");
 		String type = sc.nextLine();
 		System.out.println("Enter the model of Jet: ");
 		String model = sc.nextLine();
@@ -134,26 +134,31 @@ public class AirField {
 		System.out.println("Enter the Jet's price: ");
 		long price = sc.nextLong();
 
-		if (type.equals("UAV")) {
+		if (type.equalsIgnoreCase("UAV")) {
 
 			Jet newJet = new UAV(model, speed, range, price);
 			fleet.add(newJet);
+			System.out.println("You have successfully added a new Jet: " + newJet.toString());
 		}
-		if (type.equals("SpacePlane")) {
+		if (type.equalsIgnoreCase("SpacePlane")) {
 			Jet newJet = new SpacePlane(model, speed, range, price);
 			fleet.add(newJet);
+			System.out.println("You have successfully added a new Jet: " + newJet.toString());
 		}
-		if (type.equals("FighterJet")) {
+		if (type.equalsIgnoreCase("FighterJet")) {
 			Jet newJet = new FighterJet(model, speed, range, price);
 			fleet.add(newJet);
+			System.out.println("You have successfully added a new Jet: " + newJet.toString());
 		}
-		if (type.equals("PassengerPlane")) {
+		if (type.equalsIgnoreCase("PassengerPlane")) {
 			Jet newJet = new PassengerPlane(model, speed, range, price);
 			fleet.add(newJet);
+			System.out.println("You have successfully added a new Jet: " + newJet.toString());
 		}
-		if (type.equals("CargoPlane")) {
+		if (type.equalsIgnoreCase("CargoPlane")) {
 			Jet newJet = new CargoPlane(model, speed, range, price);
 			fleet.add(newJet);
+			System.out.println("You have successfully added a new Jet: " + newJet.toString());
 		}
 
 	}

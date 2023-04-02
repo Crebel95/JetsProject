@@ -74,9 +74,12 @@ public class JetsApplication {
 				af.removeJet();
 			}
 			if (selection == 9) {
-				System.out.println("You have chosen to exit the program. Goodbye.");
+				System.out.println("You have chosen to exit the program. Goodbye!");
 				sc.close();
 				running = false;
+			}
+			if (selection <= 0 || selection >= 10){
+				System.err.println("Invalid entry. Please enter a number between 1 - 9.");
 			}
 
 		}

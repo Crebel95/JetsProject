@@ -22,8 +22,9 @@ public abstract class Jet {
 
 	public String fly() {
 		double flightTime = range / speed;
+		double rounded = Math.round(flightTime * 100) / 100.0;
 		return "Jet model= " + model + ", speed= " + speed + " mph" + ", range= " +
-				range + ", price= " + price + ", Max amount of flight time: " + flightTime;
+				range + " miles, price= $" + price + ", Max amount of flight time: " + rounded + " hours";
 		
 	}
 	
